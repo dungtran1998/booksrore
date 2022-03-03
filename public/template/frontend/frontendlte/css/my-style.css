@@ -1,0 +1,20 @@
+.alert-danger {
+    background-color: red;
+}
+.alert-danger h5 {
+    font-weight: bold;
+}
+.alert-danger li {
+    display: block;
+}
+.notice {
+    background-color: lightpink;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+}

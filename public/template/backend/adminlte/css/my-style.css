@@ -1,0 +1,46 @@
+.table.align-middle td,
+.table.align-middle th {
+    vertical-align: middle;
+}
+.mark,
+mark {
+    padding: 0;
+    background-color: gold;
+}
+a {
+    color: #212529;
+}
+.btn {
+    position: relative;
+}
+.btn .navbar-badge {
+    position: absolute !important;
+    top: -2px;
+    right: -2px;
+    display: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 12px;
+}
+
+select.search_by {
+    width: 133px;
+    border: 1px solid #ced4da;
+}
+
+select.search_by:focus-visible {
+    outline: none;
+}
+.login-box {
+    margin: 0 auto;
+}
+
+#margin-left-zero {
+    margin-left: 0px;
+}
+
+.slb-group-user {
+    position: relative;
+}
