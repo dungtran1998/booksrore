@@ -27,11 +27,11 @@ class UserModel extends Model
 			$data["register_date"] = date('Y/m/d H:i:s', time());
 
 			$result = $this->insert($data);
-			// if ($result) {
-			// 	Session::set("notify", HelperBackend::createNotify("success", "insert-success"));
-			// } else {
-			// 	Session::set("notify", HelperBackend::createNotify("warning", "insert-failed"));
-			// }
+			if ($result) {
+				Session::set("success-register", HelperBackend::createStatusLogin("Sign up success", "Back to sign in"));
+			} else {
+				Session::set("success-register", HelperBackend::createStatusLogin("Sign up failed", "Back to sign up again"));
+			}
 			return $result;
 		}
 	}

@@ -18,48 +18,9 @@ class HelperFrontend
         return sprintf('<a href="%s" class="btn %s %s">%s</a>', $link, $class, $optionsClass, $name);
     }
 
-    public static function itemGroupACP($module, $controller, $id, $value)
-    {
-        // $link = URL::createLink($module, $controller, 'changeGroupACP', ['id' => $id, 'group_acp' => $value]);
-        $link = URL::createLink($module, $controller, 'ajaxGroupACP', ['id' => $id, 'group_acp' => $value]);
-        $colorClass = 'btn-success';
-        $icon = 'fa-check';
 
-        if ($value == 0) {
-            $colorClass = 'btn-danger';
-            $icon = 'fa-minus';
-        }
 
-        // return sprintf('<a href="%s" class="btn %s rounded-circle btn-sm"><i class="fas %s"></i></a>', $link, $colorClass, $icon);
-        return sprintf('<a id="group_acp-' . $id . '" href="javascript:changeStatus(\'%s\')" class="btn %s rounded-circle btn-sm"><i class="fas %s"></i></a>', $link, $colorClass, $icon);
-    }
 
-    public static function itemStatus($module, $controller, $id, $value)
-    {
-        // $link = URL::createLink($module, $controller, 'changeStatus', ['id' => $id, 'status' => $value]);
-        $link = URL::createLink($module, $controller, 'ajaxStatus', ['id' => $id, 'status' => $value]);
-        $colorClass = 'btn-success';
-        $icon = 'fa-check';
-
-        if ($value == 'inactive'  || $value == '0') {
-            $colorClass = 'btn-danger';
-            $icon = 'fa-minus';
-        }
-
-        // return sprintf('<a href="%s" class="btn %s rounded-circle btn-sm"><i class="fas %s"></i></a>', $link, $colorClass, $icon);
-        return sprintf('<a id="status-' . $id . '" href="javascript:changeStatus(\'%s\')" class="btn %s rounded-circle btn-sm"><i class="fas %s"></i></a>', $link, $colorClass, $icon);
-    }
-
-    public static function itemHistory($by, $time, $options = true)
-    {
-        if ($time) $time = date('H:i:s d/m/Y', strtotime($time));
-        if (!$options) $time = date('d/m/Y', strtotime($time));
-        $xhtml = sprintf('
-        <p class="mb-0"><i class="far fa-user"></i> %s</p>
-        <p class="mb-0"><i class="far fa-clock"></i> %s</p>
-        ', $by, $time);
-        return $xhtml;
-    }
     public static function highlight($search, $value)
     {
         if (!empty(trim($search))) {
@@ -176,43 +137,6 @@ class HelperFrontend
         } else {
             $xhtml .= '<a href="' . $link . '" class="btn ' . $class . '">' . $name . '</a> ';
         }
-        return $xhtml;
-    }
-
-    // Create sidebar menu
-    public static function cmsSideBarMenu($arrMenu, $module, $controller, $action)
-    {
-        $xhtml = '<ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">';
-        foreach ($arrMenu as $key => $value) {
-            $child = "";
-            if (isset($value["child"])) {
-                $child = '<ul class="nav nav-treeview">';
-                foreach ($value["child"] as $key1 => $value2) {
-                    $active2 = ($controller == $value["name"] && $value2["action"] == $action) ? "active" : "";
-                    $child .= ' <li class="nav-item">
-                                    <a href="' . $value2["link"] . '" class="nav-link ' . $active2 . '">
-                                        ' . $value2["icon"] . '
-                                        <p>' . ucfirst($value2["name"])  . '</p>
-                                    </a>
-                                </li>';
-                }
-                $child .= '</ul>';
-            }
-
-            $active = ($controller == $value["name"]) ? "active" : "";
-            $iconRight = (isset($value["child"])) ? '<i class="fas fa-angle-left right"></i>' : '';
-            $xhtml .= '
-                <li class="nav-item">
-                    <a href="' . $value["link"] . '" class="nav-link ' . $active . '">
-                        ' . $value["icon"] . '
-                        <p>' . ucfirst($value["name"]) . $iconRight . '
-                        </p>
-                    </a>
-
-                ' . $child . '
-                </li>';
-        }
-        $xhtml .= '</ul>';
         return $xhtml;
     }
 }

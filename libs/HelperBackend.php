@@ -142,12 +142,26 @@ class HelperBackend
         return array("type" => $type, "message" => $message);
     }
 
+    //Create show Login
+    public static function createStatusLogin($status, $message)
+    {
+        return array("status" => $status, "message" => $message);
+    }
+
     // Create Show Toast
     public static function showMessage()
     {
         $message = Session::get("notify");
         Session::destroyKey("notify");
         return "showToast('" . $message["type"] . "','" . $message["message"] . "')";
+    }
+
+    // Create Show Login 
+    public static function showBackToLogin()
+    {
+        $message = Session::get("success-register");
+        Session::destroyKey("success-register");
+        return "showAlert('" . $message['status'] . "','" . $message['message'] . "')";
     }
 
     // Get Parameter URL

@@ -32,8 +32,4 @@ class HTML_Frontend
         ';
         return $xhtml;
     }
-
-    
 }
-
-

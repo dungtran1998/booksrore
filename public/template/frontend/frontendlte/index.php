@@ -43,6 +43,9 @@ $imageURL = $this->_dirImg;
         if (isset($_SESSION["notify"])) {
             echo HelperBackend::showMessage();
         }
+        if (isset($_SESSION["success-register"])) {
+            echo HelperBackend::showBackToLogin();
+        }
         ?>
     </script>
 </body>

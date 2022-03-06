@@ -27,7 +27,13 @@ class Bootstrap
 		if (method_exists($this->_controllerObject, $actionName) == true) {
 			$this->_controllerObject->$actionName();
 		} else {
-			$this->_error();
+			if ($this->_params['module']  === 'frontend') {
+				require_once MODULE_PATH . 'frontend' . DS . 'controllers' . DS . 'IndexController.php';
+				$this->_controllerObject = new IndexController($this->_params);
+				$this->_controllerObject->noticeAction();
+			} else {
+				$this->_error();
+			}
 		}
 	}
 

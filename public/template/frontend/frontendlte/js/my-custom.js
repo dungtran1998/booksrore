@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // activeMenu();
 
+
     $('.slide-5').on('setPosition', function () {
         $(this).find('.slick-slide').height('auto');
         var slickTrack = $(this).find('.slick-track');
@@ -79,3 +80,18 @@ function getUrlParam(key) {
     let searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(key);
 }
+
+
+function showAlert(status, message) {
+    Swal.fire(
+        status,
+        message,
+        'question'
+    ).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "index.php?module=frontend&controller=user&action=login";
+        }
+    })
+}
+
+
